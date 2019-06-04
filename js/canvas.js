@@ -24,9 +24,9 @@ const default_json = {
   ]
 };
 
-class Image {
+class Canvas {
   
-  constructor(width=600, height=400, img='') {
+  constructor(img='') {
     
     this.canvas = document.createElement("canvas");
     document.getElementById('canvas').appendChild(this.canvas);
