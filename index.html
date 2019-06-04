@@ -7,15 +7,18 @@
   <body>
     <div id="root">
       <div class="topbar">
-        <button onclick="window.image.showGenerate();"></button>
+        <button onclick="window.canvas.showGenerateDialogue();">Generate Code</button>
       </div>
       <div id="textarea" class="half"></div>
-      <div id="canvas" class="half"></div>'
+      <div id="canvas" class="half"></div>
+      <div id="generate" onclick="this.style.display = 'none'">
+        <div id="code"></div>
+      </div>
     </div>
     
     <script src="js/canvas.js"></script>
     <script>
-      window.image = new Canvas();
+      window.canvas = new Canvas();
     </script>
   </body>
 </html>
