@@ -2,12 +2,15 @@
   <head>
     <title>Image Visualizer</title>
     
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="./css/master.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
   <body>
-    <div id="root">
-      <div class="topbar">
-        <button onclick="window.canvas.showGenerateDialogue();">Generate Code</button>
+    <div id="content">
+      <div class="topbar w3-bar w3-indigo">
+        <div class="w3-bar-item ">
+          <button onclick="window.canvas.showGenerateDialogue()" class="w3-btn w3-black w3-ripple w3-xxlarge">Generate</button>
+        </div>
       </div>
       <div id="textarea" class="half"></div>
       <div id="canvas" class="half"></div>
@@ -16,9 +19,7 @@
       </div>
     </div>
     
-    <script src="js/canvas.js"></script>
-    <script>
-      window.canvas = new Canvas();
-    </script>
+    <script src="./js/canvas.js"></script>
+    <script> window.canvas = new Canvas(); </script>
   </body>
 </html>

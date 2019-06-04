@@ -126,8 +126,7 @@ class Canvas {
 
                     ctx.stroke();
 
-                }
-                else if (element.type === 'rectangle') {
+                } else if (element.type === 'rectangle') {
 
                     const s = element.start;
                     element.end[0] = element.end[0] - s[0];
@@ -137,8 +136,7 @@ class Canvas {
                     if (element.fill) ctx.fillRect(s[0], s[1], e[0], e[1]);
                     ctx.strokeRect(s[0], s[1], e[0], e[1]);
 
-                }
-                else if (element.type === 'ellipse') {
+                } else if (element.type === 'ellipse') {
 
                     ctx.beginPath();
 
@@ -147,8 +145,7 @@ class Canvas {
                     if (element.fill) ctx.fill();
                     ctx.stroke();
 
-                }
-                else if (element.type === 'text') {
+                } else if (element.type === 'text') {
 
                     ctx.font = element.font;
 
@@ -170,8 +167,7 @@ class Canvas {
 
             });
 
-        }
-        catch (e) {
+        } catch(e) {
             console.log(e);
         }
 
@@ -202,28 +198,24 @@ class Canvas {
 
                 code += `\ndraw.line((${ s[0] },${ s[1] },${ e[0] },${ e[1] }), fill='${ element.color }')`;
 
-            }
-            else if (element.type === 'rectangle') {
+            } else if (element.type === 'rectangle') {
 
                 const s = element.start;
                 const e = element.end;
 
                 code += `\ndraw.rectangle((${s[0]}, ${s[1]}, (${e[0]}, ${e[1]}), ${ (element.fill) ? 'fill' : 'outline' }='${ element.color }')`;
 
-            }
-            else if (element.type === 'ellipse') {
+            } else if (element.type === 'ellipse') {
 
                 const xy = [element.center[0] - element.radius[0], element.center[1] - element.radius[1], element.center[0] + element.radius[0], element.center[1] + element.radius[1]];
 
                 code += `\ndraw.ellipse((${ xy }), ${ (element.fill) ? 'fill' : 'outline' }='${ element.color }')`;
 
-            }
-            else if (element.type === 'text') {
+            } else if (element.type === 'text') {
 
                 code += `\ndraw.text((${ element.position }), fill='${ element.color }', font='${ element.font }')`;
 
-            }
-            else if (element.type === 'image') {
+            } else if (element.type === 'image') {
 
                 code += `\nimg2 = Image.open('${ element.url }')\nimg.paste(img2, (${ element.position }))`
 
