@@ -3,17 +3,17 @@
     <title>Image Visualizer</title>
     
     <link rel="stylesheet" href="./css/master.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="./lib/w3.css">
   </head>
   <body>
-    <div id="content">
-      <div class="topbar w3-bar w3-indigo">
-        <div class="w3-bar-item ">
-          <button onclick="window.canvas.showGenerateDialogue()" class="w3-btn w3-black w3-ripple w3-xxlarge">Generate</button>
-        </div>
+    <div id="root" class="w3-container-fluid">
+      <div class="w3-row">
+        <div id="textarea" class="w3-half"></div>
+        <div id="canvas" class="w3-half"></div>
       </div>
-      <div id="textarea" class="half"></div>
-      <div id="canvas" class="half"></div>
+      <div class="buttons">
+        <button onclick="window.canvas.showGenerateDialogue()" class="w3-btn w3-black w3-ripple w3-xxlarge">Generate</button>
+      </div>
       <div id="generate" onclick="this.style.display = 'none'">
         <div id="code"></div>
       </div>

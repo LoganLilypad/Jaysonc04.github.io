@@ -213,7 +213,7 @@ class Canvas {
 
             } else if (element.type === 'text') {
 
-                code += `\ndraw.text((${ element.position }), fill='${ element.color }', font='${ element.font }')`;
+                code += `\ndraw.text('${ element.content }', (${ element.position }), fill='${ element.color }', font='${ element.font }')`;
 
             } else if (element.type === 'image') {
 

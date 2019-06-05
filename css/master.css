@@ -9,18 +9,45 @@ html {
   outline: 0;
 }
 
-.topbar {
-  /*background: rgba(0, 0, 0, 0.05);*/
+.buttons {
+  text-align: center;
+}
+
+#generate {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+}
+
+#code {
+  margin-left: calc(100vw - ((100vw / 3) * 2));
+  margin-top: calc(100vh / 9);
+  background: white;
+  text-align: left;
+  width: calc(100vw / 3);
+  height: calc(100vh / 1.25);
+  overflow: scroll;
+  padding: 15px;
 }
 
 #textarea {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
+  float: left;
+  height: calc(100% - 86px);
+}
+
+#canvas {
+  float: right;
+  height: calc(100% - 86px);
+  overflow: scroll;
 }
 
 #textarea > textarea {
-  width: 50%;
+  width: 100%;
   resize: none;
-  height: calc(100% - 86px);
+  height: 100%;
 }
