@@ -103,73 +103,97 @@ class Canvas {
 
             const json = JSON.parse(this.textarea.value);
 
-            const canvas = this.canvas;
             const ctx = this.ctx;
+            const canvas = this.canvas;
 
             canvas.height = json.height;
             canvas.width = json.width;
 
             if (json.background.type === 'color') {
+
                 ctx.fillStyle = json.background.data;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                this.generateElements();
+
+            } else if (json.background.type === 'image') {
+
+                let img = new Image();
+                img.src = json.background.url;
+                
+                img.onload = function () {
+                    
+                    ctx.drawImage(img, 0, 0);
+
+                    window.canvas.generateElements();
+                }
+                
             }
 
-            json.elements.forEach(function (element) {
-
-                ctx.fillStyle = element.color;
-                ctx.strokeStyle = element.color;
-
-                if (element.type === 'line') {
-
-                    ctx.moveTo(element.start[0], element.start[1]);
-                    ctx.lineTo(element.end[0], element.end[1]);
-
-                    ctx.stroke();
-
-                } else if (element.type === 'rectangle') {
-
-                    const s = element.start;
-                    element.end[0] = element.end[0] - s[0];
-                    element.end[1] = element.end[1] - s[1];
-                    const e = element.end;
-
-                    if (element.fill) ctx.fillRect(s[0], s[1], e[0], e[1]);
-                    ctx.strokeRect(s[0], s[1], e[0], e[1]);
-
-                } else if (element.type === 'ellipse') {
-
-                    ctx.beginPath();
-
-                    ctx.ellipse(element.center[0], element.center[1], element.radius[0], element.radius[1], Math.PI / 4, 0, 2 * Math.PI);
-
-                    if (element.fill) ctx.fill();
-                    ctx.stroke();
-
-                } else if (element.type === 'text') {
-
-                    ctx.font = element.font;
-
-                    ctx.fillText(element.content, element.position[0], element.position[1]);
-                    ctx.strokeText(element.content, element.position[0], element.position[1])
-
-                }
-                else if (element.type === 'image') {
-
-                    let img = new Image();
-
-                    img.onload = function () {
-                        ctx.drawImage(img, element.position[0], element.position[1]);
-                    }
-
-                    img.src = element.url;
-
-                }
-
-            });
-
-        } catch(e) {
+        } catch (e) {
             console.log(e);
         }
+
+    }
+
+    generateElements() {
+
+        const json = JSON.parse(this.textarea.value);
+
+        const canvas = this.canvas;
+        const ctx = this.ctx;
+
+        json.elements.forEach(function (element) {
+
+            ctx.fillStyle = element.color;
+            ctx.strokeStyle = element.color;
+
+            if (element.type === 'line') {
+
+                ctx.moveTo(element.start[0], element.start[1]);
+                ctx.lineTo(element.end[0], element.end[1]);
+
+                ctx.stroke();
+
+            } else if (element.type === 'rectangle') {
+
+                const s = element.start;
+                element.end[0] = element.end[0] - s[0];
+                element.end[1] = element.end[1] - s[1];
+                const e = element.end;
+
+                if (element.fill) ctx.fillRect(s[0], s[1], e[0], e[1]);
+                ctx.strokeRect(s[0], s[1], e[0], e[1]);
+
+            } else if (element.type === 'ellipse') {
+
+                ctx.beginPath();
+
+                ctx.ellipse(element.center[0], element.center[1], element.radius[0], element.radius[1], Math.PI / 4, 0, 2 * Math.PI);
+
+                if (element.fill) ctx.fill();
+                ctx.stroke();
+
+            } else if (element.type === 'text') {
+
+                ctx.font = element.font;
+
+                ctx.fillText(element.content, element.position[0], element.position[1]);
+                ctx.strokeText(element.content, element.position[0], element.position[1])
+
+            } else if (element.type === 'image') {
+
+                let img = new Image();
+
+                img.onload = function () {
+                    ctx.drawImage(img, element.position[0], element.position[1]);
+                }
+
+                img.src = element.url;
+
+            }
+
+        });
 
     }
 
