@@ -51,3 +51,8 @@ html {
   resize: none;
   height: 100%;
 }
+
+@font-face {
+    font-family: 'SupercellMagic';
+    src: url('http://vignette4.wikia.nocookie.net/clashofclans/images/a/a9/Supercell-magic-webfont.ttf');
+}
