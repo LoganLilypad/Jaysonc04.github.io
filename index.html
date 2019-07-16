@@ -1,25 +1,24 @@
-<html>
-  <head>
-    <title>Image Visualizer</title>
-    
-    <link rel="stylesheet" href="./css/master.css">
-    <link rel="stylesheet" href="./lib/w3.css">
-  </head>
-  <body>
-    <div id="root" class="w3-container-fluid">
-      <div class="w3-row">
-        <div id="textarea" class="w3-half"></div>
-        <div id="canvas" class="w3-half"></div>
-      </div>
-      <div class="buttons">
-        <button onclick="window.canvas.showGenerateDialogue()" class="w3-btn w3-black w3-ripple w3-xxlarge">Generate</button>
-      </div>
-      <div id="generate" onclick="this.style.display = 'none'">
-        <div id="code"></div>
-      </div>
-    </div>
-    
-    <script src="./js/canvas.js"></script>
-    <script> window.canvas = new Canvas(); </script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>CCMT Visualization</title>
+
+        <style media="screen">
+
+            body {
+                background: #333;
+                color: #fff;
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+
+        <canvas id="canvas"></canvas>
+
+        <script type="text/javascript" src="app.js"></script>
+    </body>
 </html>
