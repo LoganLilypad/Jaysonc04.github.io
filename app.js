@@ -13,7 +13,7 @@ const render = async (canvas) => {
     var mf = 2;
     var showPoints = true;
     var drawOneByOne = true;
-    var drawSpeed = 50;
+    var drawSpeed = 10;
 
     var ctx = canvas.getContext('2d');
     ctx.fillStyle = '#fff';
